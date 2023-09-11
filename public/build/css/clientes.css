@@ -1,0 +1,119 @@
+/*css de la ventana emergente*/
+.add-user-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    border-radius: 10px;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.input-gruop.mb-3{
+    width: 70vw;
+    left: 5vw;
+}
+
+h2{
+    text-align: center;
+    padding: 2vw;
+    color: rgb(159, 41, 41);
+}
+
+/*barra de navegacion de clientes*/
+
+#AddUser{
+    margin-left: 29vw;
+    background-color: black;
+}
+
+#searchI{
+    text-align: center;
+    margin-right: 24vw;
+}
+
+input#searchI {
+    left: 20vw;
+    margin-left: -8vw;
+}
+
+
+button.btn.btn-outline-success {
+    right: 4vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*barra de busque primera en gestion de ventas*/
+
+#showAddUserForm{
+    margin-left: 20vw;
+    background-color: black;
+}
+
+#searchInput{
+    text-align: center;
+    margin-right: 20vw;
+}
+
+input#searchInput {
+    left: 19vw;
+    margin-left: -9vw;
+}
+
+
+button.btn.btn-outline-info {
+    right: 1vw;
+}
+
+
+
+
+
+/*barra de busque segunda en gestion de ventas*/
+#icon{
+    margin-left: 20vw;
+    background-color: black;
+}
+
+#search{
+    text-align: center;
+    margin-right: 30vw;
+
+}
+
+input#search {
+    left: 10vw;
+    margin-left: -2vw;
+}
+
+
+button.btn.btn-outline-danger {
+    right: 20vw;
+}
+
+
+

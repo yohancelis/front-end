@@ -1,0 +1,118 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="build/images/barber.jpg" />
+
+  <title>The Warrior Baber Shop</title>
+  <script src="https://kit.fontawesome.com/f6414e1f4b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+  <link href="build/css/estilos.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div class="sideBarCont">
+    <button id="menu-toggle" class="btn btn-light"><i class="fa fa-bars"></i></button>
+    <div class="sidebar" id="sidebar">
+      <h3 class="logo">{{twbs}}</h3>
+      <a href="ini">Inicio</a>
+      <a href="#">Servicios</a>
+      <a href="#">Acerca de</a>
+      <a href="#">Contacto</a>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="logo">
+        <a class="twbs" href="/">{{twbs}}</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav navIni">
+          <li class="navIni nav-item">
+            <a href="ini"><i class="fa fa-house"></i>Inicio</a>
+          </li>
+          <li class="navIni nav-item">
+            <a href="confi"><i class="fa fa-address-book"></i>Confirguración</a>
+          </li>
+          <li class="navIni nav-item">
+            <a href="usu"><i class="fa fa-users"></i>Usuarios</a>
+          </li>
+          <li class="navIni nav-item">
+            <a href="com"><i class="fa fa-clipboard-list"></i>Compras</a>
+          </li>
+          <li class="navIni nav-item dropdown">
+            <a id="servicio"><i class="fa fa-handshake"></i>
+              Servicios
+              <i class="fa fa-chevron-up" id="flecha"></i></a>
+            <div id="servUl">
+              <ul>
+                <li><a class="active" href="empl" class="servIl"><i class="fa fa-user-group"></i>Empleados</a></li>
+                <li><a href="agend" class="servIl"><i class="fa fa-calendar-day"></i>Agendamiento de citas</a></li>
+                <li><a href="pagoboni" class="servIl"><i class="fa fa-hand-holding-dollar"></i>Pago de bonificaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="navIni nav-item dropdown">
+            <a id="venta"><i class="fa fa-user-tag"></i>
+              Ventas
+              <i class="fa fa-chevron-up" id="flecha2"></i></a>
+            <div id="venUl">
+              <ul>
+                <li><a href="client" class="venIl"><i class="fa fa-users-line"></i>Clientes</a></li>
+                <li><a href="gestVentas" class="venIl"><i class="fa fa-chart-line"></i>Gestión de ventas</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="navIni nav-item">
+            <a href="/"><i class="fa fa-right-from-bracket"></i>Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <div>
+      <h1 class="d-flex justify-content-center tit">Lista de usuarios</h1>
+    </div>
+    <div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Número de celular</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>JuanL</td>
+            <td>Juan</td>
+            <td>Lizcano</td>
+            <td>JuanL@gmail.com</td>
+            <td>3185173515</td>
+            <td class=""><select name="selectRol" id="selectRol">
+                <option value="Admin">Admin</option>
+                <option value="Barbero">Barbero</option>
+                <option value="Cliente">Cliente</option>
+              </select></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="build/js/funciones.js"></script>
+</body>
+
+</html>

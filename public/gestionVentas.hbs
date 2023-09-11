@@ -1,0 +1,219 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="build/images/barber.jpg" />
+
+  <title>The Warrior Baber Shop</title>
+  <script src="https://kit.fontawesome.com/f6414e1f4b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="build/css/clientes.css">
+  <link href="build/css/estilos.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div class="sideBarCont">
+    <button id="menu-toggle" class="btn btn-light"><i class="fa fa-bars"></i></button>
+    <div class="sidebar" id="sidebar">
+      <h3 class="logo">{{twbs}}</h3>
+      <a href="ini">Inicio</a>
+      <a href="#">Servicios</a>
+      <a href="#">Acerca de</a>
+      <a href="#">Contacto</a>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="logo">
+        <a class="twbs" href="/">{{twbs}}</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav navIni">
+          <li class="navIni nav-item">
+            <a href="ini"><i class="fa fa-house"></i>Inicio</a>
+          </li>
+          <li class="navIni nav-item">
+            <a href="confi"><i class="fa fa-address-book"></i>Confirguración</a>
+          </li>
+          <li class="navIni nav-item">
+            <a href="usu"><i class="fa fa-users"></i>Usuarios</a>
+          </li>
+          <li class="navIni nav-item">
+            <a href="com"><i class="fa fa-clipboard-list"></i>Compras</a>
+          </li>
+          <li class="navIni nav-item dropdown">
+            <a id="servicio"><i class="fa fa-handshake"></i>
+              Servicios
+              <i class="fa fa-chevron-up" id="flecha"></i></a>
+            <div id="servUl">
+              <ul>
+                <li><a class="active" href="emple" class="servIl"><i class="fa fa-user-group"></i>Empleados</a></li>
+                <li><a href="agend" class="servIl"><i class="fa fa-calendar-day"></i>Agendamiento de citas</a></li>
+                <li><a href="pagoboni" class="servIl"><i class="fa fa-hand-holding-dollar"></i>Pago de bonificaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="navIni nav-item dropdown">
+            <a id="venta"><i class="fa fa-user-tag"></i>
+              Ventas
+              <i class="fa fa-chevron-up" id="flecha2"></i></a>
+            <div id="venUl">
+              <ul>
+                <li><a href="client" class="venIl"><i class="fa fa-users-line"></i>Clientes</a></li>
+                <li><a href="gestVentas" class="venIl"><i class="fa fa-chart-line"></i>Gestión de ventas</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="navIni nav-item">
+            <a href="/"><i class="fa fa-right-from-bracket"></i>Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h2 class="text txt-center"> Pagos realizados por los clientes</h2>
+   <div class="container mt-5">
+        <!-- Barra de búsqueda de Bootstrap -->
+        <div class="input-group mb-3">
+           <button class="btn btn-primary" id="showAddUserForm"><i class="fas fa-user-plus"></i></button>
+            <input type="text" class="form-control" id="searchInput" placeholder="Buscar por nombre de usuario" aria-label="Buscar usuario" aria-describedby="basic-addon2">
+            <div class="input-group-append" id="searchInput">
+                <button class="btn btn-outline-info" type="button"><i class="fas fa-search" ></i></button>
+            </div>
+        </div>
+
+       
+
+        <!-- Tabla de datos ingresados -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Usuario del cliente</th>
+                    <th>Pago</th>
+                    <th>Tipo de servicio</th>
+                    <th>Forma de pago</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <!-- aqui se muestran los datos -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Ventana emergente  -->
+    <div class="overlay" id="overlay"></div>
+    <div class="add-user-popup" id="addUserPopup">
+        <button class="btn-close close-button" id="closeButton" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        <h2 class="text-center mb-4">Agregar cliente</h2>
+        <!-- Formulario para agregar usuario -->
+        <form>
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="usuario" class="form-label">Nombre de usuario:</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="usuario">
+                </div>
+                <div class="col">
+                    <label for="pago" class="form-label">Pago:</label>
+                    <input type="text" class="form-control" id="pago" placeholder="$pago">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="tipservicio" class="form-label">Tipo de servicio:</label>
+                    <input type="text" class="form-control" id="tipservicio" placeholder="servicio">
+                </div>
+                <div class="col">
+                    <label for="formpago" class="form-label">Forma de pago:</label>
+                    <input type="text" class="form-control" id="formpago" placeholder="forma de pago">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" id="addUserButton">Agregar</button>
+        </form>
+    </div>
+
+
+
+
+
+  <h2 class="text txt-center">Reporte de servicios atendidos</h2>
+   <div class="container mt-5">
+        <!-- Barra de búsqueda de Bootstrap -->
+        <div class="input-group mb-3">
+            <button class="btn btn-primary" id="icon"><i class="fas fa-user-plus" ></i></button>
+            <input type="text" class="form-control" id="search" placeholder="Buscar por nombre de usuario" aria-label="Buscar usuario" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-danger" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+
+        <!-- Tabla de datos ingresados -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Usuario del cliente</th>
+                    <th>Usuario del barbero</th>
+                    <th>Tipo de servicio</th>
+                    <th>Pago</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+                <!-- aqui se muestran los datos -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Ventana emergente  -->
+    <div class="overlay" id="overlay"></div>
+    <div class="add-user-popup" id="addPopup">
+        <button class="btn-close close-button" id="close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        <h2 class="text-center mb-4">Agregar cliente</h2>
+        <!-- Formulario para agregar usuario -->
+        <form>
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="user" class="form-label">Nombre de usuario:</label>
+                    <input type="text" class="form-control" id="user" placeholder="usuario">
+                </div>
+               <div class="col">
+                    <label for="barber" class="form-label">Nombre de barbero:</label>
+                    <input type="text" class="form-control" id="barber" placeholder="Nombre de barbero">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="service" class="form-label">Tipo de servicio:</label>
+                    <input type="text" class="form-control" id="service" placeholder="servicio">
+                </div>
+                <div class="col">
+                    <label for="Payments" class="form-label">Pago:</label>
+                    <input type="text" class="form-control" id="Payments" placeholder="$pago">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" id="addButton">Agregar</button>
+        </form>
+    </div>
+
+
+<script src="build/js/gestVentas.js"></script>
+<script src="build/js/gesVentas.js"></script>
+<script src="build/js/funciones.js"></script>
+
+</body>
+
+</html>
+
+
+
