@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const pago = document.getElementById("pago").value;
         const tipservicio = document.getElementById("tipservicio").value;
         const formpago = document.getElementById("formpago").value;
+        const validarusuario = /^[a-zA-Z]{4,15}$/;
+        const validarpago = /^[0-9]{4,100}$/;
+        const validartipservicio  = /^[a-zA-Z]{4,45}$/;
+        const validarformpago = /^[a-zA-Z]{4,20}$/;
 
         if (filaE) {
             // Actualizar los datos en la fila en edición
@@ -54,7 +58,43 @@ document.addEventListener("DOMContentLoaded", function () {
             filaE.cells[2].textContent = tipservicio;
             filaE.cells[3].textContent = formpago;
             filaE = null; // Restablecer la fila en edición
-        } else {
+
+        }  else if (usuario == "" || pago == "" || tipservicio == "" || formpago == "") {
+            Swal.fire({
+              icon: "warning",
+              confirmButtonText: "Aceptar",
+              text: "Ingrese datos primero...",
+            });
+        } else if (usuario != usuario.match(validarusuario)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "usuario invalido...",
+              });
+        } else if (pago != pago.match(validarpago)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "el pago no es correcto...",
+              });
+        } else if (tipservicio != tipservicio.match(validartipservicio)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "El tipo de servicio es invalido...",
+              });
+        } else if (formpago != formpago.match(validarformpago)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "La forma de pago es invalido...",
+              });
+        } else if(usuario == usuario.match(validarusuario) && pago == pago.match(validarpago) && tipservicio == tipservicio.match(validartipservicio) && formpago == formpago.match(validarformpago)){
+            Swal.fire({
+                icon: "success",
+                confirmButtonText: "Aceptar",
+                text: "el usuario se agrego correctamente...",
+              });
             // Si no hay fila en edición, crear una nueva fila en la tabla
             const nuevaF = document.createElement("tr");
             nuevaF.innerHTML = `
@@ -92,7 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Asociar evento de clic para eliminar usuarios a la nueva fila
             nuevaF.querySelector(".delete-button").addEventListener("click", function () {
-                nuevaF.remove();
+                Swal.fire({
+                    icon: "question",
+                    confirmButtonText: "Aceptar",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    text: "¿Estás seguro de que deseas eliminar este usuario?",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        nuevaF.remove();
+                    }
+                });
             });
         }
 
