@@ -96,10 +96,11 @@
         <table class="table mt-4">
             <thead>
                 <tr>
+                    <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Teléfono</th>
                     <th>Email</th>
+                    <th>Teléfono</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -117,6 +118,10 @@
         <!-- Formulario para agregar usuario -->
         <form>
             <div class="mb-3 row">
+              <div class="col">
+                    <label for="usuario" class="form-label">usuario:</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="usuario">
+                </div>
                 <div class="col">
                     <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Nombre">
@@ -142,6 +147,13 @@
 
     <script src="build/js/clientes.js"></script>
     <script src="build/js/funciones.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    listarDatos(); // Call the function to fetch and display API data when the page is loaded
+  });
+
+  // Rest of your JavaScript code
+</script>
 
 </body>
 </html>

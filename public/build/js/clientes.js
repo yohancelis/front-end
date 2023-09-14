@@ -1,33 +1,4 @@
-const url = 'https://api-72.onrender.com/api/clientes'
-
-const listarDatos = async() => {
-    let respuesta = ''
-    let body = document.getElementById('contenido')
-    //url: Es la url de la api.
-    //Al deslpegarla en el servidor colocar la api del servidor
-        fetch(url, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then((resp) => resp.json()) //Obtener la respuesta y convertirla a json
-    .then(function(data) {
-        let listaClientes = data.clientes//Capturar el array devuelto por la api
-        datos = 
-        listaClientes.map(function(cliente) {//Recorrer el array
-            respuesta += `<tr><td>${cliente.usuario}</td>`+
-            `<td>${cliente.nombre}</td>`+
-            `<td>${cliente.apellido}</td>`+
-            `<td>${cliente.correo}</td>`+
-            `<td>${cliente.telefono}</td>`+
-            `<td><a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(cliente)})' >Editar</a> <a class="waves-effect waves-light btn modal-danger deep-orange darken-4" href='#' onclick='eliminar("${cliente._id}")'>Eliminar</a></td>`+
-            `</>`
-            body.innerHTML = respuesta
-        })
-    })
-}
-
-/*document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     let filaE = null; // Variable para rastrear la fila en edición 
 
     // Función para abrir la ventana emergente
@@ -217,4 +188,4 @@ $(document).ready(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
         });
     });
-}); */
+}); 
