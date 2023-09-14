@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const barber = document.getElementById("barber").value;
         const service = document.getElementById("service").value;
         const Payments = document.getElementById("Payments").value;
+        const validaruser = /^[a-zA-Z]{4,15}$/;
+        const validarbarber =   /^[0-9]{4,15}$/;
+        const validarservice = /^[a-zA-Z]{4,15}$/;
+        const validarpayments =  /^[a-zA-Z]{4,15}$/;
 
         if (filaE) {
             // Actualizar los datos en la fila en edición
@@ -54,7 +58,42 @@ document.addEventListener("DOMContentLoaded", function () {
             filaE.cells[2].textContent = service;
             filaE.cells[3].textContent = Payments;
             filaE = null; // Restablecer la fila en edición
-        } else {
+        }  else if (user == "" || barber == "" || service == "" || Payments == "") {
+            Swal.fire({
+              icon: "warning",
+              confirmButtonText: "Aceptar",
+              text: "Ingrese datos primero...",
+            });
+        } else if (user != user.match(validaruser)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "Usuario invalido...",
+              });
+        } else if (barber != barber.match(validarbarber)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "Barbero invalido...",
+              });
+        } else if (service != service.match(validarservice)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "El tipo de servicio es invalido...",
+              });
+        } else if (Payments != Payments.match(validarPayments)) {
+            Swal.fire({
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                text: "El pago es invalido...",
+              });
+        } else if(user == user.match(validaruser) && barber == barber.match(validarbarber) && service == service.match(validarservice) && Payments == Payments.match(validarpayments)){
+            Swal.fire({
+                icon: "success",
+                confirmButtonText: "Aceptar",
+                text: "Se agrego correctamente...",
+              });
             // Si no hay fila en edición, crear una nueva fila en la tabla
             const nuevaF = document.createElement("tr");
             nuevaF.innerHTML = `
@@ -93,7 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Asociar evento de clic para eliminar usuarios a la nueva fila
             nuevaF.querySelector(".delete-button").addEventListener("click", function () {
-                nuevaF.remove();
+                Swal.fire({
+                    icon: "question",
+                    confirmButtonText: "Aceptar",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    text: "¿Estás seguro de que deseas eliminar este usuario?",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        nuevaF.remove();
+                    }
+                });
             });
         }
 
