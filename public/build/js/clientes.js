@@ -21,16 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
             const filaA = this.closest("tr");
 
             // Obtener los datos actuales de la fila
-            const nombre = filaA.cells[0].textContent;
-            const apellido = filaA.cells[1].textContent;
-            const telefono = filaA.cells[2].textContent;
+            const usuario = filaA.cells[0].textContent;
+            const nombre = filaA.cells[1].textContent;
+            const apellido = filaA.cells[2].textContent;
             const email = filaA.cells[3].textContent;
+            const telefono = filaA.cells[4].textContent;
+
 
             // Mostrar los datos en el formulario de edición
+            document.getElementById("usuario").value = usuario;
             document.getElementById("nombre").value = nombre;
             document.getElementById("apellido").value = apellido;
-            document.getElementById("telefono").value = telefono;
             document.getElementById("email").value = email;
+            document.getElementById("telefono").value = telefono;
 
             // Establecer la fila en edición (para actualizar los datos)
             filaE = filaA;
@@ -42,10 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Agregar usuario a la tabla al hacer clic en el botón "Agregar"
     document.getElementById("addB").addEventListener("click", function () {
+        const usuario = document.getElementById("usuario").value;
         const nombre = document.getElementById("nombre").value;
         const apellido = document.getElementById("apellido").value;
         const telefono = document.getElementById("telefono").value;
         const email = document.getElementById("email").value;
+        const validarusuario = /^[a-zA-Z]{4,15}$/;
         const validarnombre = /^[a-zA-Z]{4,15}$/;
         const validarapellido = /^[a-zA-Z]{4,15}$/;
         const validartelefono = /^[0-9]{10}$/;
@@ -53,17 +58,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (filaE) {
             // Actualizar los datos en la fila en edición
-            filaE.cells[0].textContent = nombre;
-            filaE.cells[1].textContent = apellido;
-            filaE.cells[2].textContent = telefono;
+            filaE.cells[0].textContent = usuario;
+            filaE.cells[1].textContent = nombre;
+            filaE.cells[2].textContent = apellido;
             filaE.cells[3].textContent = email;
+            filaE.cells[4].textContent = telefono;
             filaE = null; // Restablecer la fila en edición
-        } else if (nombre == "" || apellido == "" || telefono == "" || email == "") {
+        } else if (usuario== "" || nombre == "" || apellido == "" || telefono == "" || email == "") {
         Swal.fire({
           icon: "warning",
           confirmButtonText: "Aceptar",
           text: "Ingrese datos primero...",
         });
+    } else if (usuario != usuario.match(validarusuario)){
+        Swal.fire({
+            icon: "warning",
+            confirmButtonText: "Aceptar",
+            text: "usuario invalido...",
+          });
+
     } else if (nombre != nombre.match(validarnombre)) {
         Swal.fire({
             icon: "warning",
@@ -88,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             confirmButtonText: "Aceptar",
             text: "Email invalido...",
           });
-    } else if(nombre == nombre.match(validarnombre) && apellido == apellido.match(validarapellido) && telefono == telefono.match(validartelefono) && email == email.match(validaremail)){
+    } else if( usuario == usuario.match(validarusuario) && nombre == nombre.match(validarnombre) && apellido == apellido.match(validarapellido) && telefono == telefono.match(validartelefono) && email == email.match(validaremail)){
         Swal.fire({
             icon: "success",
             confirmButtonText: "Aceptar",
@@ -98,10 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Si no hay fila en edición, crear una nueva fila en la tabla
             const nuevaF = document.createElement("tr");
             nuevaF.innerHTML = `
+                <td>${usuario}</td>
                 <td>${nombre}</td>
                 <td>${apellido}</td>
-                <td>${telefono}</td>
                 <td>${email}</td>
+                <td>${telefono}</td>
                 <td>
                     <button class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i></button>
                     <button class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash-alt"></i></button>
@@ -116,24 +130,30 @@ document.addEventListener("DOMContentLoaded", function () {
             nuevaF.querySelector(".edit-button").addEventListener("click", function () {
                 const filaA = this.closest("tr");
 
-
-                const nombre = filaA.cells[0].textContent;
-                const apellido = filaA.cells[1].textContent;
-                const telefono = filaA.cells[2].textContent;
+                const usuario = filaA.cells[0].textContent;
+                const nombre = filaA.cells[1].textContent;
+                const apellido = filaA.cells[2].textContent;
                 const email = filaA.cells[3].textContent;
+                const telefono = filaA.cells[4].textContent;
 
               
-
+                document.getElementById("usuario").value = usuario;
                 document.getElementById("nombre").value = nombre;
                 document.getElementById("apellido").value = apellido;
-                document.getElementById("telefono").value = telefono;
                 document.getElementById("email").value = email;
+                document.getElementById("telefono").value = telefono;
+
 
 
                 filaE = filaA;
+
                 
 
                 openPopup();
+
+                
+                
+                
 
             });
             
@@ -156,10 +176,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Limpiar los campos del formulario
+            document.getElementById("usuario").value = "";
             document.getElementById("nombre").value = "";
             document.getElementById("apellido").value = "";
-            document.getElementById("telefono").value = "";
             document.getElementById("email").value = "";
+            document.getElementById("telefono").value = "";
 
             // Cerrar la ventana emergente
             closePopup();
