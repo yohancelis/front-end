@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
             text: "Email invalido...",
           });
     } else if( usuario == usuario.match(validarusuario) && nombre == nombre.match(validarnombre) && apellido == apellido.match(validarapellido) && telefono == telefono.match(validartelefono) && email == email.match(validaremail)){
-        registrar(usuario,nombre,apellido,telefono,email)
+        registrar()
         Swal.fire({
             icon: "success",
             confirmButtonText: "Aceptar",
